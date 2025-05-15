@@ -4,12 +4,16 @@ import { Link } from 'react-router-dom'
 import Passwordinput from '../components/Passwordinput'
 import { useState } from 'react'
 import { validateEmail } from '../utils/helper'
+import { axiosInstance } from '../utils/axiosInstance'
+import { useNavigate } from 'react-router-dom'
  
 const Login = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
+
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -24,6 +28,22 @@ const Login = () => {
     setError("");
 
     // login api call
+    try {
+      const response = await axiosInstance.post('/users/login',{
+        email: email,
+        password: password
+      });
+      if(response.data && response.data.token){
+        localStorage.setItem('token', response.data.token);
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        setError('Invalid email or password');
+      } else {
+        setError('An error occurred. Please try again later.');
+      }
+    }
   }
 
   return (

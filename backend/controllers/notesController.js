@@ -77,7 +77,7 @@ const deleteNote = async (req, res)=>{
         if(note.userId.toString() !== req.user.id){
             return res.status(403).json({message: "You are not authorized to delete this note"});
         }
-        await note.remove();
+        await note.deleteOne();
         res.status(201).json({
             message: "Note deleted successfully",
         });
@@ -110,6 +110,28 @@ const updateisPinned = async (req, res)=>{
     }
 };
 
+const searchNotes = async (req, res)=>{
+    if(!req.query){
+        return res.status(401).json({message: "Please provide a search query"});
+    }
+    try{
+        const matchingNotes = await Note.find({
+            userId: req.user.id,
+            $or: [
+                { title: { $regex: new RegExp(req.query, "i")} },
+                { content: { $regex: new RegExp(req.query, "i")} },
+            ],
+        });
+        return res.status(201).json({
+            message: "Notes fetched successfully",
+            notes: matchingNotes,
+        });
+    }catch (error) {
+        console.log(error);
+        return res.status(500).json({message: "Internal server error"});
+    }
+};
+
 
 module.exports = {
     createNote,
@@ -117,4 +139,5 @@ module.exports = {
     getNotes,
     deleteNote,
     updateisPinned,
+    searchNotes,
 };

@@ -3,6 +3,8 @@ import { useState } from "react";
 import Passwordinput from "../components/Passwordinput";
 import { Link } from "react-router-dom";
 import { validateEmail } from "../utils/helper";
+import { useNavigate } from "react-router-dom";
+import { axiosInstance } from "../utils/axiosInstance";
 
 
 const Signup = () => {
@@ -12,6 +14,7 @@ const Signup = () => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
 
+  const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -30,7 +33,26 @@ const Signup = () => {
     }
     setError("");
     // signup api call
+    try {
+      const response = await axiosInstance.post('/users/register',{
+        name: name,
+        email: email,
+        password: password
+      });
+      if(response.data && response.data.token){
+        localStorage.setItem('token', response.data.token);
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        setError('Invalid email or password');
+      } else {
+        setError('An error occurred. Please try again later.');
+      }
+    }
   }
+  
+
   return (
     <>
       <Navbar />
