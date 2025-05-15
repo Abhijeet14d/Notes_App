@@ -44,6 +44,27 @@ const Home = () => {
       type,
     });
   }
+
+  const updateisPinned = (noteData) => {
+    const noteId = noteData._id;
+    try {
+      const response = axiosInstance.put('/notes/pin/'+noteId, {
+        isPinned: !noteData.isPinned,
+      });
+      if(response.data && response.data.note){
+        showToastMessage(
+                noteData.isPinned ? 'Note unpinned successfully' : 'Note pinned successfully',
+                'success'
+            );
+        getallNotes();
+      }
+
+    } catch (error) {
+      if(error.response && error.response.data){
+        console.log("Error in updateisPinned:", error.response.data.message);
+      }
+    }
+  }
   const handleCloseToast = () =>{
     setShowToastMsg({
       isShown: false,
@@ -140,7 +161,7 @@ const Home = () => {
                 isPinned={item.isPinned}
                 onDelete={() => deleteNote(item)}
                 onEdit={() => handleEdit(item)}
-                onPinNote={() => {}}
+                onPinNote={() => updateisPinned(item)}
               />
             ))}
           </div>

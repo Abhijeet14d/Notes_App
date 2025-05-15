@@ -41,7 +41,7 @@ const Signup = () => {
       });
       if(response.data && response.data.token){
         localStorage.setItem('token', response.data.token);
-        navigate("/dashboard");
+        navigate("/");
       }
     } catch (error) {
       if (error.response && error.response.status === 401) {
