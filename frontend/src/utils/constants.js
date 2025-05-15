@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://notes-wt9g.onrender.com/api'
+export const BASE_URL = '/api'
