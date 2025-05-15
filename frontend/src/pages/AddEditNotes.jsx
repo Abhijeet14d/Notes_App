@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Taginput from '../components/Taginput'
 import { MdClose } from 'react-icons/md'
-import { axiosInstance } from '../utils/axiosInstance'
+import { axiosInstance } from '../utils/axiosInstance.js'
 
 const AddEditNotes = ({ noteData, getAllNotes ,type, onClose, showToastMessage}) => {
     const [title, setTitle] = useState(noteData?.title || '')

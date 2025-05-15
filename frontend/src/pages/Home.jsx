@@ -1,13 +1,13 @@
-import Navbar from '../components/Navbar'
-import NoteCard from '../components/NoteCard'
+import Navbar from '../components/Navbar.jsx'
+import NoteCard from '../components/NoteCard.jsx'
 import { MdAdd } from 'react-icons/md'
-import AddEditNotes from './AddEditNotes'
+import AddEditNotes from './AddEditNotes.jsx'
 import { useState, useEffect } from 'react'
 import Modal from 'react-modal'
 import { useNavigate } from 'react-router-dom'
-import { axiosInstance } from '../utils/axiosInstance'
-import Toast from '../components/Toast'
-import EmptyCard from '../components/EmptyCard'
+import { axiosInstance } from '../utils/axiosInstance.js'
+import Toast from '../components/Toast.jsx'
+import EmptyCard from '../components/EmptyCard.jsx'
 
 const Home = () => {
   const [openAddEditModal, setOpenAddEditModal] = useState({

@@ -1,10 +1,10 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar.jsx'
 import { Link } from 'react-router-dom'
-import Passwordinput from '../components/Passwordinput'
+import Passwordinput from '../components/Passwordinput.jsx'
 import { useState } from 'react'
-import { validateEmail } from '../utils/helper'
-import { axiosInstance } from '../utils/axiosInstance'
+import { validateEmail } from '../utils/helper.js'
+import { axiosInstance } from '../utils/axiosInstance.js'
 import { useNavigate } from 'react-router-dom'
  
 const Login = () => {

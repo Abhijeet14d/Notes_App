@@ -1,10 +1,10 @@
-import Navbar from "../components/Navbar"
+import Navbar from "../components/Navbar.jsx"
 import { useState } from "react";
-import Passwordinput from "../components/Passwordinput";
+import Passwordinput from "../components/Passwordinput.jsx";
 import { Link } from "react-router-dom";
-import { validateEmail } from "../utils/helper";
+import { validateEmail } from "../utils/helper.js";
 import { useNavigate } from "react-router-dom";
-import { axiosInstance } from "../utils/axiosInstance";
+import { axiosInstance } from "../utils/axiosInstance.js";
 
 
 const Signup = () => {
