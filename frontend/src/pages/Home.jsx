@@ -5,7 +5,7 @@ import AddEditNotes from './AddEditNotes.jsx'
 import { useState, useEffect } from 'react'
 import Modal from 'react-modal'
 import { useNavigate } from 'react-router-dom'
-import { axiosInstance } from '../utils/axiosInstance.js'
+import { axiosInstance } from '../utils/axiosinstance.js'
 import Toast from '../components/Toast.jsx'
 import EmptyCard from '../components/EmptyCard.jsx'
 

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Passwordinput from '../components/Passwordinput.jsx'
 import { useState } from 'react'
 import { validateEmail } from '../utils/helper.js'
-import { axiosInstance } from '../utils/axiosInstance.js'
+import { axiosInstance } from '../utils/axiosinstance.js'
 import { useNavigate } from 'react-router-dom'
  
 const Login = () => {

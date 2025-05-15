@@ -4,7 +4,7 @@ import Passwordinput from "../components/Passwordinput.jsx";
 import { Link } from "react-router-dom";
 import { validateEmail } from "../utils/helper.js";
 import { useNavigate } from "react-router-dom";
-import { axiosInstance } from "../utils/axiosInstance.js";
+import { axiosInstance } from "../utils/axiosinstance.js";
 
 
 const Signup = () => {
