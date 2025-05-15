@@ -25,7 +25,7 @@ const Home = () => {
   const [userinfo, setUserInfo] = useState(null);
   const [allNotes, setAllNotes] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [isSearch, setIsSearch] = useState(false);
+  // Removed unused isSearch state
 
   const navigate = useNavigate();
 
@@ -123,7 +123,7 @@ const Home = () => {
       const response = await axiosInstance.get('/notes/search',{ params: { query },
       });
       if (response.data && response.data.notes) {
-        setIsSearch(true);
+        // Removed isSearch state update
         setAllNotes(response.data.notes);
       }
     }catch (error) {
@@ -132,7 +132,7 @@ const Home = () => {
   };
 
   const handleClearSearch = () => {
-    setIsSearch(false);
+    // Removed isSearch state update
     getallNotes();
   };
 
